@@ -1,137 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-us">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Rock, Paper, Scissors!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets\css\style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets\css\reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <meta name="viewport" content="width=device-width">
 </head>
 
 <body>
+    <h1>The Word Guess Game</h1>
+    <br><br>
 
-  <!-- <img src="rps.png"> -->
+    <h2 id="instructions">
+        Guess what word I'm thinking of.
+    </h2>
+    <br><br>
 
-    <h1 id=bang>
-      </h1>
-  
-      <h2 id=plays>
-        <p></p>
-      </h2>
-  
-      <h3 id=results>
-        <p></p>
-      </h3>
-  
-    <div id=instructions>
-      Press R for Rock, P for Paper, or S for Scissors!<br><br>
-    </div>
+    <h3 id="prompts">
+        Take your time.<br>
+        Focus.
+    </h3><br><br>
 
-    <style>
-
-        @media screen and (max-width: 640px) {
-            body, button {
-            font-size: 1.5rem;
-            }
-
-            button {
-              background: gray;
-              color: black;
-            } 
-        }
-    
-        /* body, button {
-         font-size: 2rem;
-        } */
-    
-      </style>
-  
-  <script type="text/javascript">
-
-    var computerChoices = ["r", "p", "s"];
-
-    var tie = 0;
-    var win = 0;
-    var loss = 0;
-
-    // This function is run whenever the user presses a key.
-    document.onkeyup = function (event) {
-
-      // Determines which key was pressed.
-      var userGuess = event.key;
-      roshambo(userGuess);
-
-    }
-
-      function roshambo(userGuess) {
-        // Randomly chooses a choice from the options array. This is the Computer's guess.
-        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    <div id="emptyword">
+        <div class="row">
+            <div class="col-2" id=spot0></div>
+            <div class="col-2" id=spot1></div>
+            <div class="col-2" id=spot2></div>
+            <div class="col-2" id=spot3></div>
+            <div class="col-2" id=spot4></div>
+            <div class="col-2" id=spot5></div>
+            <!-- <div class="col-2" id=spot6>_</div>
+            <div class="col-2" id=spot7>_</div>
+            <div class="col-2" id=spot8>_</div>
+            <div class="col-2" id=spot9>_</div>
+            <div class="col-2" id=spot10>_</div>
+            <div class="col-2" id=spot11>_</div>
+            <div class="col-2" id=spot12>_</div>
+            <div class="col-2" id=spot13>_</div>
+            <div class="col-2" id=spot14>_</div>
+            <div class="col-2" id=spot15>_</div> -->
+            
+        </div>
+    </div><br><br>
 
 
-        if (userGuess === 'r' || userGuess === 'p' || userGuess === 's') {
-          if (userGuess === 'r') {
-            userGuess = "rock";
-            if (computerGuess === 'r') {
-              bang.innerHTML = ("Rock versus rock! <br>We have a tie!"); 
-            computerGuess = 'rock';
-            tie++;
-            } else if (computerGuess === 'p') {
-              bang.innerHTML = ("Paper envelops rock! <br>Computer wins!");
-            computerGuess = 'paper'; 
-            loss++;
-            } else if (computerGuess === 's') {
-              bang.innerHTML = ("Rock destroys scissors! <br>Player wins!");
-            computerGuess = 'scissors'; 
-            win++;
-            }
-          }
+    <h3 id="winsNow">
+        Wins: 0
+    </h3>
 
-          if (userGuess === 'p') {
-            userGuess = "paper";
-            if (computerGuess === 'r') {
-              bang.innerHTML = ("Paper envelops rock! <br>Player wins!"); 
-              computerGuess = 'rock';
-              win++;
-            } else if (computerGuess === 'p') {
-              bang.innerHTML = ("Paper versus paper! <br>We have a tie!"); 
-              computerGuess = 'paper';
-              tie++;
-            } else if (computerGuess === 's') {
-              bang.innerHTML = ("Scissors snip paper! <br>Computer wins!"); 
-              computerGuess = 'scissors';
-              loss++;
-            }
-          }
-          
+    <h3 id="lossesNow">
+        Losses: 0
+    </h3>
 
-          if (userGuess === 's') {
-            userGuess = "scissors";
-            if (computerGuess === 'r') {
-              bang.innerHTML = ("Rock destroys scissors! <br>Computer wins!"); 
-              computerGuess = 'rock';
-              loss++;
-            } else if (computerGuess === 'p') {
-              bang.innerHTML = ("Scissors snip paper! <br>Player wins!"); 
-            computerGuess = 'paper';
-            win++;
-            } else if (computerGuess === 's') {
-              bang.innerHTML = ("Scissors versus scissors! <br>We have a tie!"); 
-              computerGuess = 'scissors';
-              tie++;
-            }
-          }
-          
-          plays.innerHTML = "user threw: " + userGuess + "<br>computer threw: " + computerGuess;
-          results.innerHTML = "total wins: " + win + "<br>total losses: " + loss + "<br> & ties: " + tie;
-        }
+    <h3 id="guessesNow">
+        Guesses remaining: 0
+    </h3>
 
-      // game.innerHTML = "";
-      }
+    <h3 id="guessedSoFar">
+        Guessed so far: 0
+    </h3>
 
-  </script>
-
-  <button type="button" onclick="roshambo('r')">Rock</button>
-  <button type="button" onclick="roshambo('p')">Paper</button>
-  <button type="button" onclick="roshambo('s')">Scissors</button>
+<script src="assets\javascript\game.js"></script>
 
 </body>
 
