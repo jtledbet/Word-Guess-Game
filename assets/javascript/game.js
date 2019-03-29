@@ -8,6 +8,7 @@ var losses = 0
 var guessed = ""
 var totalGuesses = 10
 var correctGuesses = 0
+var maxWordLength = 10
 var guessesRem = totalGuesses
 guessesNow.innerHTML = ("Guesses remaining: " + guessesRem)
 
@@ -24,7 +25,7 @@ for(i = 0; i < 15; i++){
 //     if (word.length > 10) console.log (word.length)})
 
 // Choose a word (max length argument)
-var theWord = selectWord(14)
+var theWord = selectWord(maxWordLength)
 console.log("theWord: " + theWord);
 
 // Fills in the word (for debugging)
@@ -79,8 +80,8 @@ function submitGuess(userGuess) {
                 var curSpot = "spot" + ltrIndex
                 getSpot = document.getElementById(curSpot)
                 getSpot.innerHTML = theWord[ltrIndex]
+                getSpot.style.color = "#04FA1D"
             }
-            // console.log("bottom: " + i + " " + curSpot + " " + " " + ltrIndex)
         }
 
         if (howMany > 1){
@@ -130,23 +131,40 @@ function selectWord(maxlength) {
     for (i = 0; i < 15; i++) {
         var curSpot = "spot" + i
         var getSpot = document.getElementById(curSpot)
-    
+        
         if (theWord[i] != null) {
-            getSpot.innerHTML = i
+            getSpot.innerHTML = i + 1
             getSpot.hidden = false
-            console.log("i: " + i + " " + theWord[i] + " hidden: false")
+            getSpot.style.color = "white"
         } else {
             getSpot.innerHTML = " "
             getSpot.hidden = true
-            console.log("i: " + i + " " + theWord[i] + " hidden: true")
+            getSpot.style.color = "white"
         }
     }
+
+    // Resize columns based on word length:
+    for (i = 0; i < theWord.length; i++) {
+        var curSpot = "spot" + i
+        
+        if (theWord.length < 7){
+            resizeSpots = document.getElementById(curSpot)
+            resizeSpots.setAttribute("class", "col-" + 1)
+        } if (theWord.length < 6){
+            resizeSpots = document.getElementById(curSpot)
+            resizeSpots.setAttribute("class", "col-" + 2)
+        }if (theWord.length < 5){
+            resizeSpots = document.getElementById(curSpot)
+            resizeSpots.setAttribute("class", "col-" + 3)
+        }     
+    }
+    
         return theWord
 }
 
 function checkWin(a, b) {
     if (a === b) {
-        instructions.innerHTML = "You've won! Congratulations."
+        instructions.innerHTML = "You've won!<br>Congratulations."
         correctGuesses = 0
         howMany = 0
         wins++    
@@ -158,12 +176,12 @@ function checkWin(a, b) {
 }
 
 function resetGame() {
-    theWord = selectWord(6)
+    theWord = selectWord(maxWordLength)
     
     guessesRem = 10
     guessed = ""
 
-    instructions.innerHTML = "Guess what word I'm thinking."
+    instructions.innerHTML = "Guess what word I'm thinking of. <br> (Press a key to guess a letter."
     prompts.innerHTML = "New game!<br>Good luck."
 
     updateStats()

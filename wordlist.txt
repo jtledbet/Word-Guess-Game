@@ -46,7 +46,4 @@ universal
 unmanned	
 lacking a crew
 acclimatise	
-colonise	
-explore	
-float	
-orbit	
+colonise, explore, float, orbit	
