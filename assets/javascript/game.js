@@ -186,7 +186,7 @@ function resetGame() {
     guessesRem = 10
     guessed = ""
 
-    instructions.innerHTML = "Guess what word I'm thinking of. <br> (Press a key to guess a letter."
+    instructions.innerHTML = "Guess what word I'm thinking of. <br> (Press a key to guess a letter.)"
     prompts.innerHTML = "New game!<br>Good luck."
 
     updateStats()
