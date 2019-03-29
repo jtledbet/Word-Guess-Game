@@ -4,34 +4,30 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hangman</title>
+    <title>Space Hangman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets\css\style.css">
+
     <link rel="stylesheet" type="text/css" media="screen" href="assets\css\reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets\css\style.css">
 
-    <meta name="viewport" content="width=device-width">
 </head>
 
 <body>
 
     <wrapper id="main">
-        <h1>The Word Guess Game</h1>
-        <br><br>
+        <div class="container" id="header">
+            <h1>Space Words!</h1>
+            <br><br>
 
-        <h2 id="instructions">
-            Guess what word I'm thinking of. <br>
-            (Press a key to guess a letter.)
-        </h2>
-        <br><br>
+            <h2 id="instructions">
+                Guess the word I'm thinking of. <br>
+                (Press a key to guess a letter.)
+            </h2>
+        </div>
 
-        <h3 id="prompts">
-            Take your time.<br>
-            Focus.
-        </h3><br><br>
-
-        <div id="emptyword">
+        <div class="container" id="emptyword">
             <div class="row">
                 <div class="col-1" id=spot0></div>
                 <div class="col-1" id=spot1></div>
@@ -49,24 +45,31 @@
                 <div class="col-1" id=spot13></div>
                 <div class="col-1" id=spot14></div>
             </div>
-        </div><br><br>
+        </div>
 
-
-        <h3 id="winsNow">
-            Wins: 0
+        <h3 class="container" id="prompts">
+            <br>
+            <br>
+            <br>
         </h3>
 
-        <h3 id="lossesNow">
-            Losses: 0
-        </h3>
+        <div class="container" id="stats">
+            <h3 id="winsNow">
+                Wins: 0
+            </h3>
 
-        <h3 id="guessesNow">
-            Guesses remaining: 0
-        </h3>
+            <h3 id="lossesNow">
+                Losses: 0
+            </h3>
 
-        <h3 id="guessedSoFar">
-            Guessed so far: 0
-        </h3>
+            <h3 id="guessesNow">
+                Guesses remaining: 0
+            </h3>
+
+            <h3 id="guessedSoFar">
+                Guessed so far: 0
+            </h3>
+        </div>
     </wrapper>
    
     <script src="assets\javascript\game.js"></script>

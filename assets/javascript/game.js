@@ -8,7 +8,7 @@ var losses = 0
 var guessed = ""
 var totalGuesses = 10
 var correctGuesses = 0
-var maxWordLength = 10
+var maxWordLength = 8
 var guessesRem = totalGuesses
 guessesNow.innerHTML = ("Guesses remaining: " + guessesRem)
 
@@ -57,7 +57,7 @@ document.onkeyup = function (event) {
         if (guessed.indexOf(userGuess) === (-1)) {
             submitGuess(userGuess);
             } else {
-                prompts.innerHTML = ("Wait! You already guessed \'" + userGuess + "\'. <br>Guess a different letter.")
+                prompts.innerHTML = ("Wait! <br>You already guessed \'" + userGuess + "\'. <br>Guess a different letter.")
             }
     }
 
@@ -96,7 +96,7 @@ function submitGuess(userGuess) {
 
     } else {
         
-        prompts.innerHTML = ("Negative!" + "<br> No \'" + userGuess + "\' in the word. Please try again.");
+        prompts.innerHTML = ("Negative!" + "<br> No \'" + userGuess + "\' in the word. <br>Please try again.");
         guessesRem--
 
     }
