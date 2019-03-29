@@ -11,7 +11,7 @@
 }
 
 body {
-    color: grey;
+    color: white;
     background: black;
     background: url("../images/bg.jpg");
 }
@@ -19,7 +19,7 @@ body {
 .container{
     padding: 10px;
     position: relative;
-    float:left;
+    float: left;
 }
 
 #emptyword {
@@ -27,7 +27,19 @@ body {
 }
 
 #statsbox {
-    position: fixed;
-    float: right;
+    position: relative;
+    float: left;
     color: green;
+}
+
+@media screen and (max-width: 570px) {
+    #emptyword {
+      font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 575px) {
+    #emptyword {
+      font-size: 72px;
+    }
 }

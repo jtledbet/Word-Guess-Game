@@ -20,22 +20,9 @@ for(i = 0; i < 15; i++){
     getSpot.hidden = true
 }
 
-// Finding too-big words:
-// wordList.forEach(function(word) {
-//     if (word.length > 10) console.log (word.length)})
-
 // Choose a word (max length argument)
 var theWord = selectWord(maxWordLength)
 console.log("theWord: " + theWord);
-
-// Fills in the word (for debugging)
-// for (i = 0; i < theWord.length; i++) {
-//         var curSpot = "spot" + i; console.log(theWord)
-//         console.log("curSpot: " + curSpot)
-        
-//         getSpot = document.getElementById(curSpot)
-//         getSpot.innerHTML = theWord[i]
-// }
 
 // When a key is pressed:
 document.onkeyup = function (event) {
@@ -133,8 +120,8 @@ function selectWord(maxlength) {
         var getSpot = document.getElementById(curSpot)
         
         if (theWord[i] != null) {
-            getSpot.innerHTML = i + 1
-            // getSpot.innerHTML = "_"
+            // getSpot.innerHTML = i + 1
+            getSpot.innerHTML = " "
             getSpot.hidden = false
             getSpot.style.color = "white"
         } else {
@@ -148,18 +135,22 @@ function selectWord(maxlength) {
     for (i = 0; i < theWord.length; i++) {
         var curSpot = "spot" + i
         
-        if (theWord.length < 7){
+        if (theWord.length <= 8){
             resizeSpots = document.getElementById(curSpot)
             resizeSpots.setAttribute("class", "col-" + 1)
-            console.log("resizing x")
-        } if (theWord.length < 6){
+            console.log("resizing 8")
+        } if (theWord.length <= 7){
+            resizeSpots = document.getElementById(curSpot)
+            resizeSpots.setAttribute("class", "col-" + 1)
+            console.log("resizing 7")
+        } if (theWord.length <= 6){
             resizeSpots = document.getElementById(curSpot)
             resizeSpots.setAttribute("class", "col-" + 2)
-            console.log("resizing y")
-        }if (theWord.length < 5){
+            console.log("resizing 6")
+        } if (theWord.length <= 5){
             resizeSpots = document.getElementById(curSpot)
-            resizeSpots.setAttribute("class", "col-" + 3)
-            console.log("resizing z")
+            resizeSpots.setAttribute("class", "col-" + 2)
+            console.log("resizing 5")
         }     
 
     }
