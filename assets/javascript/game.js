@@ -11,11 +11,21 @@ var correctGuesses = 0
 var guessesRem = totalGuesses
 guessesNow.innerHTML = ("Guesses remaining: " + guessesRem)
 
+// Boxes hidden by default:
+for(i = 0; i < 15; i++){
+    var curSpot = "spot" + i
+    var getSpot = document.getElementById(curSpot)
+    getSpot.innerHTML = " "
+    getSpot.hidden = true
+}
+
+// Finding too-big words:
 // wordList.forEach(function(word) {
 //     if (word.length > 10) console.log (word.length)})
 
-
-var theWord = selectWord(6)
+// Choose a word (max length argument)
+var theWord = selectWord(14)
+console.log("theWord: " + theWord);
 
 // Fills in the word (for debugging)
 // for (i = 0; i < theWord.length; i++) {
@@ -85,7 +95,7 @@ function submitGuess(userGuess) {
 
     } else {
         
-        prompts.innerHTML = ("Negative!" + "<br> No \'" + userGuess + "\'. Please try again.");
+        prompts.innerHTML = ("Negative!" + "<br> No \'" + userGuess + "\' in the word. Please try again.");
         guessesRem--
 
     }
@@ -95,7 +105,9 @@ function submitGuess(userGuess) {
         losses++
         lossesNow.innerHTML = ("Losses: " + losses)
 
-        resetGame()
+        setTimeout(function(){ 
+            resetGame();
+        }, 3000);
     }
 
     function win() {
@@ -115,16 +127,18 @@ function selectWord(maxlength) {
         theWord = wordList[Math.floor(Math.random() * wordList.length)];
     
     // Fill in underscores:
-    for (i = 0; i < maxlength; i++) {
+    for (i = 0; i < 15; i++) {
         var curSpot = "spot" + i
         var getSpot = document.getElementById(curSpot)
     
         if (theWord[i] != null) {
-            getSpot.innerHTML = "_"
+            getSpot.innerHTML = i
             getSpot.hidden = false
+            console.log("i: " + i + " " + theWord[i] + " hidden: false")
         } else {
             getSpot.innerHTML = " "
             getSpot.hidden = true
+            console.log("i: " + i + " " + theWord[i] + " hidden: true")
         }
     }
         return theWord

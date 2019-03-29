@@ -1,8 +1,15 @@
 
-.col-2 {
-    /* border: 1px solid black */
+.col-1 {
     background: black;
     color: white;
-    font-size: 18px;
+    font-size: 32px;
     text-align: center;
+}
+
+body {
+    width: auto;
+}
+
+#emptyword {
+    width: auto;
 }
