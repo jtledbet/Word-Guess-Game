@@ -133,7 +133,8 @@ function selectWord(maxlength) {
         var getSpot = document.getElementById(curSpot)
         
         if (theWord[i] != null) {
-            getSpot.innerHTML = i + 1
+            // getSpot.innerHTML = i + 1
+            getSpot.innerHTML = "_"
             getSpot.hidden = false
             getSpot.style.color = "white"
         } else {
@@ -146,14 +147,14 @@ function selectWord(maxlength) {
     // Resize columns based on word length:
     for (i = 0; i < theWord.length; i++) {
         var curSpot = "spot" + i
-        
-        if (theWord.length < 7){
+
+        if (theWord.length < 8){
             resizeSpots = document.getElementById(curSpot)
             resizeSpots.setAttribute("class", "col-" + 1)
-        } if (theWord.length < 6){
+        } if (theWord.length < 7){
             resizeSpots = document.getElementById(curSpot)
             resizeSpots.setAttribute("class", "col-" + 2)
-        }if (theWord.length < 5){
+        }if (theWord.length <= 6){
             resizeSpots = document.getElementById(curSpot)
             resizeSpots.setAttribute("class", "col-" + 3)
         }     
